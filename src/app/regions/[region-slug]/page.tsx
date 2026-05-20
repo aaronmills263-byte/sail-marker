@@ -210,7 +210,7 @@ export default async function RegionPage({ params }: PageProps) {
         </section>
 
         {/* Other regions */}
-        <section className="bg-sail-100 border-t border-sail-300">
+        <section className="bg-white border-t border-navy-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <h2 className="font-display text-2xl font-bold text-navy-900 mb-6">
               Explore other regions

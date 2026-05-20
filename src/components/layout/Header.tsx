@@ -54,19 +54,11 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="/favicon.svg"
-              alt="Sail Marker"
-              width={40}
-              height={40}
-              className="block md:hidden h-10 w-10"
-              priority
-            />
-            <Image
               src="/images/branding/logo-primary.svg"
               alt="Sail Marker"
               width={300}
               height={50}
-              className="hidden md:block h-11 w-[264px] flex-shrink-0"
+              className="h-8 w-[192px] md:h-11 md:w-[264px] flex-shrink-0"
               priority
             />
           </Link>

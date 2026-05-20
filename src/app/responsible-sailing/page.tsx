@@ -87,7 +87,7 @@ export default function ResponsibleSailingPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-sail-100 border-t border-sail-300">
+        <section className="bg-white border-t border-navy-100">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
             <h2 className="font-display text-2xl font-bold text-navy-900 mb-4">
               Sail thoughtfully

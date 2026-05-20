@@ -104,7 +104,7 @@ export default function HomePage() {
         </section>
 
         {/* Featured guides placeholder */}
-        <section className="bg-sail-100 border-y border-sail-300">
+        <section className="bg-white border-y border-navy-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
               Sailing guides
