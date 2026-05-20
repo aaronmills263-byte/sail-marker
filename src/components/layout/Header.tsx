@@ -66,7 +66,7 @@ export function Header() {
               alt="Sail Marker"
               width={300}
               height={50}
-              className="hidden md:block h-11 w-auto"
+              className="hidden md:block h-11 w-[264px] flex-shrink-0"
               priority
             />
           </Link>
