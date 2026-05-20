@@ -56,9 +56,9 @@ export function Header() {
             <Image
               src="/images/branding/logo-primary.svg"
               alt="Sail Marker"
-              width={300}
-              height={50}
-              className="h-8 w-[192px] md:h-11 md:w-[264px] flex-shrink-0"
+              width={600}
+              height={200}
+              className="h-10 w-[120px] md:h-14 md:w-[168px] flex-shrink-0"
               priority
             />
           </Link>
