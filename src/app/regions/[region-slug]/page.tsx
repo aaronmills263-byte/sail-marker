@@ -1,9 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Compass, MapPin } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { MapPin } from "lucide-react";
+import type { CharterDestination } from "@/types";
+
+export const revalidate = 3600;
+
+const priceTierLabels: Record<string, string> = {
+  budget: "Budget-Friendly",
+  mid_range: "Mid-Range",
+  premium: "Premium",
+  luxury: "Ultra-Premium",
+};
+
+// URL slug → DB region value
+const slugToRegion: Record<string, string> = {
+  mediterranean: "mediterranean",
+  caribbean: "caribbean",
+  "indian-ocean": "indian_ocean",
+  "asia-pacific": "asia_pacific",
+  "atlantic-north-europe": "atlantic_north_europe",
+  americas: "americas",
+};
+
+const regionLabels: Record<string, string> = {
+  mediterranean: "Mediterranean",
+  caribbean: "Caribbean",
+  indian_ocean: "Indian Ocean",
+  asia_pacific: "Asia Pacific",
+  atlantic_north_europe: "Atlantic & Northern Europe",
+  americas: "Americas",
+};
 
 const regionMap: Record<string, { name: string; description: string; highlights: string[] }> = {
   mediterranean: {
@@ -65,6 +96,16 @@ export default async function RegionPage({ params }: PageProps) {
     notFound();
   }
 
+  const dbRegion = slugToRegion[slug] || slug;
+  const { data: destinations } = await supabase
+    .from("charter_destinations")
+    .select("*")
+    .eq("status", "live")
+    .eq("region", dbRegion)
+    .order("name");
+
+  const regionDestinations = (destinations as CharterDestination[]) || [];
+
   return (
     <>
       <Header />
@@ -106,20 +147,66 @@ export default async function RegionPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Destinations grid placeholder */}
+        {/* Destinations grid */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="font-display text-2xl font-bold text-navy-900 mb-6">
             Charter destinations
+            {regionDestinations.length > 0 && (
+              <span className="ml-2 text-base font-normal text-navy-400">
+                ({regionDestinations.length})
+              </span>
+            )}
           </h2>
-          <div className="text-center py-16 border-2 border-dashed border-navy-200 rounded-2xl bg-white">
-            <Compass className="w-12 h-12 text-navy-300 mx-auto mb-4" />
-            <p className="text-navy-500 text-lg font-medium">
-              {region.name} destinations coming soon.
+          {regionDestinations.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {regionDestinations.map((d) => (
+                <Link
+                  key={d.slug}
+                  href={`/destinations/${d.slug}`}
+                  className="group rounded-2xl border border-navy-100 bg-white overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div className="relative aspect-[16/10] bg-navy-100">
+                    {d.hero_image_url ? (
+                      <Image
+                        src={d.hero_image_url}
+                        alt={d.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <MapPin className="w-10 h-10 text-navy-300" />
+                      </div>
+                    )}
+                    {d.price_tier && (
+                      <span className="absolute top-3 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-navy-700 rounded-full">
+                        {priceTierLabels[d.price_tier] || d.price_tier}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-lg font-bold text-navy-900 group-hover:text-sky-600 transition-colors">
+                      {d.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-navy-500 flex items-center gap-1.5">
+                      {d.flag_emoji && <span>{d.flag_emoji}</span>}
+                      {d.country}
+                    </p>
+                    {d.description && (
+                      <p className="mt-2 text-sm text-navy-600 line-clamp-2">
+                        {d.description}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="text-navy-400 text-center py-8">
+              No live destinations in this region yet.
             </p>
-            <p className="text-navy-400 text-sm mt-2">
-              Individual charter destinations for this region are being curated and will appear here.
-            </p>
-          </div>
+          )}
         </section>
 
         {/* Other regions */}

@@ -120,8 +120,13 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               <div className="bg-white rounded-2xl border border-navy-100 p-8">
                 <h2 className="font-display text-2xl font-bold text-navy-900 mb-4">Overview</h2>
                 <p className="text-navy-600 leading-relaxed">
-                  {destination.description || "Detailed description coming soon."}
+                  {destination.description}
                 </p>
+                {destination.long_description && (
+                  <div className="mt-6 text-navy-600 leading-relaxed whitespace-pre-line">
+                    {destination.long_description}
+                  </div>
+                )}
               </div>
 
               {/* Marinas */}
