@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+
 
 const footerLinks = {
   discover: [
@@ -31,20 +31,9 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center mb-4">
-              <Image
-                src="/favicon.png"
-                alt="Sail Marker"
-                width={166}
-                height={218}
-                className="block md:hidden h-8 w-auto brightness-0 invert"
-              />
-              <Image
-                src="/images/branding/logo-primary.svg"
-                alt="Sail Marker"
-                width={168}
-                height={28}
-                className="hidden md:block h-7 w-auto brightness-0 invert"
-              />
+              <span className="font-display text-lg font-semibold tracking-wide text-white" style={{ fontVariant: "small-caps" }}>
+                Sail Marker
+              </span>
             </Link>
             <p className="text-navy-300 text-sm leading-relaxed">
               Charter destinations &middot; cruising grounds &middot; mapped
