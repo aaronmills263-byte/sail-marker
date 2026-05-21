@@ -2,18 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { GuideContentRenderer } from "@/components/guides/GuideContentRenderer";
 import { supabase } from "@/lib/supabase";
-import { Clock, Calendar, ArrowLeft, BookOpen } from "lucide-react";
+import { Clock, Calendar, ArrowLeft, BookOpen, MapPin } from "lucide-react";
+
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const categoryLabels: Record<string, string> = {
+  "decision-guides": "Decision Guide",
+  "practical-guides": "Practical Guide",
+  "seasonal-guides": "Seasonal Guide",
+  "technical-guides": "Technical Guide",
+};
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const { data: guide } = await supabase
     .from("editorial_guides")
-    .select("title, subtitle, format")
+    .select("title, subtitle, meta_description")
     .eq("slug", slug)
     .single();
 
@@ -23,15 +33,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: guide.title,
-    description: guide.subtitle || `Sailing guide: ${guide.title}`,
+    description: guide.meta_description || guide.subtitle || `Sailing guide: ${guide.title}`,
     alternates: { canonical: `https://www.sailmarker.com/guides/${slug}` },
   };
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
-    month: "long",
+  return new Date(dateStr).toLocaleDateString("en-GB", {
     day: "numeric",
+    month: "long",
     year: "numeric",
   });
 }
@@ -81,6 +91,26 @@ export default async function GuideDetailPage({ params }: PageProps) {
     );
   }
 
+  // Fetch related guides in the same category
+  const { data: relatedGuides } = await supabase
+    .from("editorial_guides")
+    .select("slug, title, subtitle, read_time_minutes, hero_image_url")
+    .eq("category", guide.category)
+    .eq("is_published", true)
+    .neq("slug", slug)
+    .limit(3);
+
+  // Fetch related destination if set
+  let relatedDestination: { slug: string; name: string } | null = null;
+  if (guide.related_destination_slug) {
+    const { data } = await supabase
+      .from("charter_destinations")
+      .select("slug, name")
+      .eq("slug", guide.related_destination_slug)
+      .single();
+    relatedDestination = data;
+  }
+
   return (
     <>
       <Header />
@@ -103,15 +133,23 @@ export default async function GuideDetailPage({ params }: PageProps) {
               <span>/</span>
               <Link href="/guides" className="hover:text-white transition-colors">Guides</Link>
               <span>/</span>
-              <span className="text-white">{guide.title}</span>
+              <span className="text-white/80 truncate max-w-[200px] sm:max-w-none">{guide.title}</span>
             </nav>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+
+            {guide.category && (
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-sky-300 bg-white/10 px-3 py-1 rounded-full mb-4">
+                {categoryLabels[guide.category] || guide.category}
+              </span>
+            )}
+
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight max-w-4xl">
               {guide.title}
             </h1>
             {guide.subtitle && (
-              <p className="mt-4 text-lg text-white/90 max-w-2xl">{guide.subtitle}</p>
+              <p className="mt-4 text-lg text-white/90 max-w-2xl leading-relaxed">{guide.subtitle}</p>
             )}
-            <div className="flex items-center gap-4 text-sm text-sky-300/70 mt-6">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-sky-300/70 mt-6">
+              <span>By the Sail Marker Editorial Team</span>
               {guide.read_time_minutes && (
                 <span className="flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5" />
@@ -124,20 +162,15 @@ export default async function GuideDetailPage({ params }: PageProps) {
                   {formatDate(guide.published_at)}
                 </span>
               )}
-              {guide.author_name && (
-                <span>By {guide.author_name}</span>
-              )}
             </div>
           </div>
         </section>
 
         {/* Content */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <article className="prose prose-navy max-w-none">
-            {guide.content_html ? (
-              <div dangerouslySetInnerHTML={{ __html: guide.content_html }} />
-            ) : guide.content ? (
-              <div className="text-navy-600 leading-relaxed whitespace-pre-wrap">{guide.content}</div>
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <article>
+            {guide.content_md ? (
+              <GuideContentRenderer contentMd={guide.content_md} />
             ) : (
               <div className="text-center py-12 border-2 border-dashed border-navy-200 rounded-2xl">
                 <p className="text-navy-400">Guide content is being prepared by our editorial team.</p>
@@ -145,26 +178,23 @@ export default async function GuideDetailPage({ params }: PageProps) {
             )}
           </article>
 
-          {/* Tags */}
-          {guide.tags && guide.tags.length > 0 && (
-            <div className="mt-10 pt-6 border-t border-navy-100">
-              <div className="flex flex-wrap gap-2">
-                {guide.tags.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="text-xs bg-navy-100 text-navy-600 px-3 py-1.5 rounded-full"
-                  >
-                    {tag.replace(/-/g, " ")}
-                  </span>
-                ))}
-              </div>
+          {/* Related destination */}
+          {relatedDestination && (
+            <div className="mt-12 pt-6 border-t border-navy-100">
+              <Link
+                href={`/destinations/${relatedDestination.slug}`}
+                className="inline-flex items-center gap-2 text-sm text-navy-600 hover:text-navy-800 transition-colors"
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                Explore {relatedDestination.name} as a charter destination
+              </Link>
             </div>
           )}
 
           {/* Footer nav */}
           <div className="mt-10 pt-6 border-t border-navy-100 flex items-center justify-between">
             <div className="text-sm text-navy-500">
-              By {guide.author_name || "Sail Marker"} · Sail Marker Editorial
+              By the Sail Marker Editorial Team
             </div>
             <Link
               href="/guides"
@@ -175,6 +205,45 @@ export default async function GuideDetailPage({ params }: PageProps) {
             </Link>
           </div>
         </section>
+
+        {/* More in this category */}
+        {relatedGuides && relatedGuides.length > 0 && (
+          <section className="bg-navy-50 border-t border-navy-100">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+              <h2 className="font-display text-xl font-bold text-navy-900 mb-6">
+                More in {categoryLabels[guide.category] || guide.category}s
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedGuides.map((related) => (
+                  <Link
+                    key={related.slug}
+                    href={`/guides/${related.slug}`}
+                    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    {related.hero_image_url && (
+                      <div className="aspect-[16/9] overflow-hidden">
+                        <img
+                          src={related.hero_image_url}
+                          alt={related.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                    <div className="p-4">
+                      <h3 className="font-display text-sm font-bold text-navy-900 leading-snug group-hover:text-navy-700 transition-colors">
+                        {related.title}
+                      </h3>
+                      {related.read_time_minutes && (
+                        <p className="mt-2 text-xs text-navy-400">{related.read_time_minutes} min read</p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </main>
       <Footer />
     </>
