@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
@@ -84,30 +85,46 @@ export default async function DestinationDetailPage({ params }: PageProps) {
       <Header />
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="relative bg-navy-700 overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-            <nav className="flex items-center gap-1.5 text-sm text-sky-300/70 mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
-              <span>/</span>
-              <Link href="/destinations" className="hover:text-white transition-colors">Destinations</Link>
-              <span>/</span>
-              <span className="text-white">{destination.name}</span>
-            </nav>
-            <h1 className="font-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
-              {destination.name}
-            </h1>
-            {destination.region && (
-              <p className="mt-3 text-sky-300 flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                {destination.region}
-              </p>
-            )}
+        <section className="relative h-[55vh] sm:h-[70vh] bg-navy-700 overflow-hidden">
+          {destination.hero_image_url ? (
+            <Image
+              src={destination.hero_image_url}
+              alt={destination.name}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-navy-700 to-navy-900" />
+          )}
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+
+          {/* Text overlay */}
+          <div className="absolute inset-0 flex flex-col justify-end">
+            <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14">
+              <nav className="flex items-center gap-1.5 text-sm text-white/70 mb-4">
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <span>/</span>
+                <Link href="/destinations" className="hover:text-white transition-colors">Destinations</Link>
+                <span>/</span>
+                <span className="text-white">{destination.name}</span>
+              </nav>
+              {destination.flag_emoji && destination.country && (
+                <p className="text-sm text-white/80 mb-2">
+                  {destination.flag_emoji} {destination.country}
+                </p>
+              )}
+              <h1 className="font-display text-[32px] sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+                {destination.name}
+              </h1>
+              {destination.sub_region && (
+                <p className="mt-2 text-lg sm:text-xl text-white/80 italic">
+                  {destination.sub_region}
+                </p>
+              )}
+            </div>
           </div>
         </section>
 

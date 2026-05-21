@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { supabase } from "@/lib/supabase";
 import { Compass, Anchor, Map, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -33,7 +35,13 @@ const jsonLd = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { data: heroDestination } = await supabase
+    .from("charter_destinations")
+    .select("hero_image_url, name")
+    .eq("slug", "whitsundays")
+    .single();
+
   return (
     <>
       <Header />
@@ -44,18 +52,27 @@ export default function HomePage() {
         />
 
         {/* Hero */}
-        <section className="relative bg-navy-700 overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-36 text-center">
+        <section className="relative h-[65vh] sm:h-[85vh] bg-navy-700 overflow-hidden">
+          {heroDestination?.hero_image_url ? (
+            <Image
+              src={heroDestination.hero_image_url}
+              alt="Whitsundays, Australia"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-navy-700 to-navy-900" />
+          )}
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
               Charter destinations, mapped.
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-sky-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-6 text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               The world&apos;s finest cruising grounds, marinas, and itineraries — curated for sailors who value the journey.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -75,6 +92,11 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+
+          {/* Photo credit */}
+          <p className="absolute bottom-4 right-4 text-xs text-white/50 italic">
+            Whitsundays, Australia
+          </p>
         </section>
 
         {/* Regions grid */}
