@@ -54,11 +54,11 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="/images/branding/logo-primary.svg"
+              src="/images/branding/logo-primary.png"
               alt="Sail Marker"
-              width={600}
-              height={200}
-              className="h-10 w-[120px] md:h-14 md:w-[168px] flex-shrink-0"
+              width={910}
+              height={274}
+              className="h-10 w-[133px] md:h-14 md:w-[186px] flex-shrink-0"
               priority
             />
           </Link>
