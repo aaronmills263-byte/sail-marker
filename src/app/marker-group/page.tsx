@@ -56,7 +56,7 @@ const properties = [
     name: "Sail Marker",
     tagline: "The world's sailing destinations, mapped.",
     url: "https://www.sailmarker.com",
-    logo: "/images/branding/marker-group/sail-marker-icon.svg",
+    logo: "/images/branding/marker-group/sail-marker-icon.png",
     accent: "#0F3D5C",
     status: "live" as const,
   },

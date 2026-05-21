@@ -32,11 +32,11 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center mb-4">
               <Image
-                src="/images/branding/logo-mark-only.svg"
+                src="/favicon.png"
                 alt="Sail Marker"
-                width={32}
-                height={32}
-                className="block md:hidden h-8 w-8 brightness-0 invert"
+                width={166}
+                height={218}
+                className="block md:hidden h-8 w-auto brightness-0 invert"
               />
               <Image
                 src="/images/branding/logo-primary.svg"
