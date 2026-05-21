@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Ship, Check, Star, Crown } from "lucide-react";
+import { CurrencyToggle } from "./CurrencyToggle";
+
+type Currency = "GBP" | "USD" | "EUR";
 
 export const metadata: Metadata = {
   title: "Charter Partners",
@@ -30,7 +34,11 @@ const tiers = [
   {
     name: "Featured Partner",
     icon: Star,
-    price: "From £99/mo",
+    price: {
+      GBP: "From £99/mo",
+      USD: "From $149/mo",
+      EUR: "From €119/mo",
+    },
     description: "Enhanced visibility across Sail Marker.",
     features: [
       "Everything in Free Listing",
@@ -47,7 +55,11 @@ const tiers = [
   {
     name: "Premium Partner",
     icon: Crown,
-    price: "From £299/mo",
+    price: {
+      GBP: "From £299/mo",
+      USD: "From $399/mo",
+      EUR: "From €349/mo",
+    },
     description: "Maximum exposure and editorial integration.",
     features: [
       "Everything in Featured Partner",
@@ -65,7 +77,16 @@ const tiers = [
   },
 ];
 
-export default function CharterPartnersPage() {
+export default async function CharterPartnersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ currency?: string }>;
+}) {
+  const params = await searchParams;
+  const currency: Currency =
+    params.currency === "USD" || params.currency === "EUR"
+      ? params.currency
+      : "GBP";
   return (
     <>
       <Header />
@@ -85,6 +106,9 @@ export default function CharterPartnersPage() {
 
         {/* Tiers */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <Suspense fallback={null}>
+            <CurrencyToggle />
+          </Suspense>
           <div className="grid md:grid-cols-3 gap-6">
             {tiers.map((tier) => (
               <div
@@ -104,7 +128,7 @@ export default function CharterPartnersPage() {
                 <tier.icon className={`w-8 h-8 mb-4 ${tier.highlight ? "text-sky-300" : "text-navy-400"}`} />
                 <h3 className="font-display text-xl font-bold mb-1">{tier.name}</h3>
                 <p className={`text-2xl font-bold mb-3 ${tier.highlight ? "text-sky-300" : "text-navy-900"}`}>
-                  {tier.price}
+                  {typeof tier.price === "string" ? tier.price : tier.price[currency]}
                 </p>
                 <p className={`text-sm mb-6 ${tier.highlight ? "text-navy-200" : "text-navy-500"}`}>
                   {tier.description}
