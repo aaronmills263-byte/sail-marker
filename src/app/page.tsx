@@ -52,14 +52,14 @@ export default async function HomePage() {
         />
 
         {/* Hero */}
-        <section className="relative h-[65vh] sm:h-[85vh] bg-navy-700 overflow-hidden">
+        <section className="relative h-[50vh] sm:h-[60vh] bg-navy-700 overflow-hidden">
           {heroDestination?.hero_image_url ? (
             <Image
               src={heroDestination.hero_image_url}
               alt="Whitsundays, Australia"
               fill
               priority
-              className="object-cover"
+              className="object-cover object-center"
               sizes="100vw"
             />
           ) : (
