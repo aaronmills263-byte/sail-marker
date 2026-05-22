@@ -14,8 +14,11 @@ const footerLinks = {
     { href: "/guides", label: "Itinerary Guides" },
   ],
   partnerships: [
-    { href: "/list-your-marina", label: "List Your Marina" },
-    { href: "/charter-partners", label: "Charter Partners" },
+    { href: "/partner", label: "Partner Hub" },
+    { href: "/partner/charter", label: "Charter Partners" },
+    { href: "/partner/marina", label: "List Your Marina" },
+    { href: "/partner/provisioning", label: "Provisioning" },
+    { href: "/partner/transfers", label: "Transfers" },
   ],
   company: [
     { href: "/about", label: "About Us" },

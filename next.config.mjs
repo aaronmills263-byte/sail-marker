@@ -7,6 +7,20 @@ const nextConfig = {
       { protocol: "https", hostname: "**.supabase.co" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/charter-partners",
+        destination: "/partner/charter",
+        permanent: true,
+      },
+      {
+        source: "/list-your-marina",
+        destination: "/partner/marina",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

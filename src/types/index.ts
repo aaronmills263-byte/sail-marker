@@ -101,7 +101,7 @@ export interface ListingEnquiry {
   company_name?: string;
   marina_or_charter_company?: string;
   destination?: string;
-  enquiry_type?: "marina_listing" | "charter_partner" | "featured_partner" | "other";
+  enquiry_type?: "marina_listing" | "charter_partner" | "provisioning_partner" | "transfer_partner" | "featured_partner" | "other";
   message?: string;
   status: "new" | "in_progress" | "closed";
   created_at: string;

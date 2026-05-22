@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { supabase } from "@/lib/supabase";
 import { Anchor, MapPin, Wind, Calendar, ArrowLeft } from "lucide-react";
+import { PlanThisTrip } from "@/components/PlanThisTrip";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -145,6 +146,14 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                   </div>
                 )}
               </div>
+
+              {/* Plan this trip */}
+              <PlanThisTrip
+                nearestAirport={destination.nearest_airport || ""}
+                nearestAirportCode={destination.nearest_airport_code || ""}
+                destinationSlug={destination.slug}
+                destinationName={destination.name}
+              />
 
               {/* Marinas */}
               <div className="bg-white rounded-2xl border border-navy-100 p-8">
