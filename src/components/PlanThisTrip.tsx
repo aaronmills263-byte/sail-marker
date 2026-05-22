@@ -166,24 +166,34 @@ export function PlanThisTrip({
     setFlightError("");
 
     const toIata = nearestAirportCode || "";
-    let url = `https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:${fromCode},to:${toIata}`;
-    if (departDate) url += `,departure:${departDate}`;
-    url += `&leg2=from:${toIata},to:${fromCode}`;
-    if (returnDate) url += `,departure:${returnDate}`;
-    url += `&passengers=adults:${flightPassengers}&options=cabinclass:economy`;
+    const depart = departDate || "TANYT";
+    const ret = returnDate || "TANYT";
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    // Build URL parts — colons and commas are literal, not encoded
+    const leg1 = `from:${fromCode},to:${toIata},departure:${depart}`;
+    const leg2 = `from:${toIata},to:${fromCode},departure:${ret}`;
+    const params = [
+      `leg1=${leg1}`,
+      `leg2=${leg2}`,
+      `passengers=adults:${flightPassengers}`,
+      `mode=search`,
+      `trip=roundtrip`,
+    ].join("&");
+
+    const url = `https://www.expedia.com/Flights-Search?${params}`;
+    window.open(url, "_blank");
   }
 
   function handleInsuranceSearch(e: React.FormEvent) {
     e.preventDefault();
 
-    let url = `https://www.worldnomads.com/travel-insurance/get-a-quote?country=${encodeURIComponent(country || destinationName)}`;
-    if (tripStart) url += `&departDate=${tripStart}`;
-    if (tripEnd) url += `&returnDate=${tripEnd}`;
-    url += `&numTravellers=${insuranceTravellers}`;
+    const dest = encodeURIComponent(country || destinationName);
+    const parts = [`country=${dest}`, `numTravellers=${insuranceTravellers}`];
+    if (tripStart) parts.push(`departDate=${tripStart}`);
+    if (tripEnd) parts.push(`returnDate=${tripEnd}`);
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    const url = `https://www.worldnomads.com/travel-insurance/get-a-quote?${parts.join("&")}`;
+    window.open(url, "_blank");
   }
 
   const inputClass =
