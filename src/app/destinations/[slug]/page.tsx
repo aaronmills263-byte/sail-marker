@@ -153,6 +153,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                 nearestAirportCode={destination.nearest_airport_code || ""}
                 destinationSlug={destination.slug}
                 destinationName={destination.name}
+                country={destination.country || ""}
               />
 
               {/* Marinas */}
