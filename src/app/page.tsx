@@ -59,7 +59,8 @@ export default async function HomePage() {
               alt="Whitsundays, Australia"
               fill
               priority
-              className="object-cover object-center"
+              className="object-cover"
+              style={{ objectPosition: "center 70%" }}
               sizes="100vw"
             />
           ) : (
