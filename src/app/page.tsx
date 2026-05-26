@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { supabase } from "@/lib/supabase";
-import { Compass, Anchor, Map, BookOpen } from "lucide-react";
+import { Compass, Anchor, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sail Marker — Charter Destinations, Mapped",
@@ -35,13 +34,7 @@ const jsonLd = {
   },
 };
 
-export default async function HomePage() {
-  const { data: heroDestination } = await supabase
-    .from("charter_destinations")
-    .select("hero_image_url, name")
-    .eq("slug", "whitsundays")
-    .single();
-
+export default function HomePage() {
   return (
     <>
       <Header />
@@ -53,19 +46,15 @@ export default async function HomePage() {
 
         {/* Hero */}
         <section className="relative h-[50vh] sm:h-[60vh] bg-navy-700 overflow-hidden">
-          {heroDestination?.hero_image_url ? (
-            <Image
-              src={heroDestination.hero_image_url}
-              alt="Whitsundays, Australia"
-              fill
-              priority
-              className="object-cover"
-              style={{ objectPosition: "center 70%" }}
-              sizes="100vw"
-            />
-          ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-navy-700 to-navy-900" />
-          )}
+          <Image
+            src="/images/homepage-hero.jpg"
+            alt="Sailboat Vents du Sud at golden hour, Le Grau-du-Roi, France"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "center 40%" }}
+            sizes="100vw"
+          />
           {/* Dark gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
 
@@ -96,7 +85,7 @@ export default async function HomePage() {
 
           {/* Photo credit */}
           <p className="absolute bottom-4 right-4 text-xs text-white/50 italic">
-            Whitsundays, Australia
+            Le Grau-du-Roi, France · Photo: Christian Ferrer / CC BY 4.0
           </p>
         </section>
 
