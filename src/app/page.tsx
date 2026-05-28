@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Compass, Anchor, BookOpen } from "lucide-react";
+import { Compass, BookOpen, Ship, GraduationCap, ShoppingBag } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sail Marker — Charter Destinations, Mapped",
@@ -115,47 +115,82 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Featured guides placeholder */}
+        {/* Partner with us */}
         <section className="bg-white border-y border-navy-100">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
-              Sailing guides
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy-900 text-center mb-4">
+              Partner with Sail Marker
             </h2>
-            <p className="text-navy-600 max-w-xl mx-auto mb-8">
-              In-depth editorial guides for every charter destination — written with the depth of a travel magazine, the precision of a pilot book.
+            <p className="text-navy-600 text-center max-w-xl mx-auto mb-12">
+              Reach sailors actively planning their next charter. Three ways to get started.
             </p>
-            <Link
-              href="/guides"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-navy-700 text-white font-medium rounded-lg hover:bg-navy-800 transition-colors"
-            >
-              Browse all guides
-            </Link>
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div className="rounded-2xl border border-navy-100 bg-white p-6 hover:shadow-md hover:border-sky-300 transition-all">
+                <Ship className="w-7 h-7 text-sky-400 mb-3" />
+                <h3 className="font-display text-lg font-bold text-navy-900 mb-1">
+                  For Charter Companies
+                </h3>
+                <p className="text-2xl font-bold text-navy-900 mb-2">$500/mo</p>
+                <p className="text-sm text-navy-500 leading-relaxed mb-4">
+                  Featured placement on destination pages. Fleet showcase. Editorial integration.
+                </p>
+                <Link
+                  href="/partner/charter"
+                  className="text-sm font-semibold text-sky-600 hover:text-sky-700"
+                >
+                  Learn more &rarr;
+                </Link>
+              </div>
+              <div className="rounded-2xl border border-navy-100 bg-white p-6 hover:shadow-md hover:border-sky-300 transition-all">
+                <GraduationCap className="w-7 h-7 text-sky-400 mb-3" />
+                <h3 className="font-display text-lg font-bold text-navy-900 mb-1">
+                  For Sailing Schools
+                </h3>
+                <p className="text-2xl font-bold text-navy-900 mb-2">$200/mo</p>
+                <p className="text-sm text-navy-500 leading-relaxed mb-4">
+                  Sidebar placement on destination pages. Reach students before they charter.
+                </p>
+                <Link
+                  href="/partner/school"
+                  className="text-sm font-semibold text-sky-600 hover:text-sky-700"
+                >
+                  Learn more &rarr;
+                </Link>
+              </div>
+              <div className="rounded-2xl border border-navy-100 bg-white p-6 hover:shadow-md hover:border-sky-300 transition-all">
+                <ShoppingBag className="w-7 h-7 text-sky-400 mb-3" />
+                <h3 className="font-display text-lg font-bold text-navy-900 mb-1">
+                  For Marinas &amp; Services
+                </h3>
+                <p className="text-2xl font-bold text-navy-900 mb-2">From $100/mo</p>
+                <p className="text-sm text-navy-500 leading-relaxed mb-4">
+                  Marinas, provisioning, transfers, crew agencies, chandleries — listed per destination.
+                </p>
+                <Link
+                  href="/partner"
+                  className="text-sm font-semibold text-sky-600 hover:text-sky-700"
+                >
+                  View all tiers &rarr;
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Listing CTA */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <h2 className="font-display text-3xl font-bold text-navy-900 mb-4">
-            List your marina or charter base
+        {/* Sailing guides */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
+            Sailing guides
           </h2>
-          <p className="text-navy-600 max-w-xl mx-auto mb-8 leading-relaxed">
-            Reach sailors planning their next charter. Free listing for all marinas — premium placement available for charter companies.
+          <p className="text-navy-600 max-w-xl mx-auto mb-8">
+            In-depth editorial guides for every charter destination — written with the depth of a travel magazine, the precision of a pilot book.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/list-your-marina"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-navy-700 text-white font-medium rounded-lg hover:bg-navy-800 transition-colors"
-            >
-              <Anchor className="w-5 h-5" />
-              List Your Marina
-            </Link>
-            <Link
-              href="/charter-partners"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-navy-200 text-navy-700 font-medium rounded-lg hover:bg-navy-50 transition-colors"
-            >
-              Charter Partners
-            </Link>
-          </div>
+          <Link
+            href="/guides"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-navy-700 text-white font-medium rounded-lg hover:bg-navy-800 transition-colors"
+          >
+            Browse all guides
+          </Link>
         </section>
       </main>
       <Footer />

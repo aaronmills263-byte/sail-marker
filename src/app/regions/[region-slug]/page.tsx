@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { supabase } from "@/lib/supabase";
 import { MapPin } from "lucide-react";
 import type { CharterDestination } from "@/types";
+import { RegionSponsorBanner } from "@/components/partners/RegionSponsorBanner";
 
 export const revalidate = 3600;
 
@@ -110,6 +111,9 @@ export default async function RegionPage({ params }: PageProps) {
     <>
       <Header />
       <main className="min-h-screen">
+        {/* Region sponsor */}
+        <RegionSponsorBanner regionName={region.name} regionSlug={slug} />
+
         {/* Hero */}
         <section className="bg-navy-700">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">

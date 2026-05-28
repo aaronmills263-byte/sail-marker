@@ -7,6 +7,10 @@ import { Footer } from "@/components/layout/Footer";
 import { supabase } from "@/lib/supabase";
 import { Anchor, MapPin, Wind, Calendar, ArrowLeft } from "lucide-react";
 import { PlanThisTrip } from "@/components/PlanThisTrip";
+import { CharterPartnerSpotlight } from "@/components/partners/CharterPartnerSpotlight";
+import { OnTheGroundServicesBlock } from "@/components/partners/OnTheGroundServicesBlock";
+import { SailingSchoolBlock } from "@/components/partners/SailingSchoolBlock";
+import { IsYourBusinessHereCard } from "@/components/partners/IsYourBusinessHereCard";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -147,6 +151,12 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                 )}
               </div>
 
+              {/* Charter partners */}
+              <CharterPartnerSpotlight
+                destinationName={destination.name}
+                destinationSlug={destination.slug}
+              />
+
               {/* Plan this trip */}
               <PlanThisTrip
                 nearestAirport={destination.nearest_airport || ""}
@@ -179,9 +189,15 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                 <h2 className="font-display text-2xl font-bold text-navy-900 mb-4">Related Guides</h2>
                 <p className="text-navy-400 text-sm">Editorial guides for this destination will appear here.</p>
               </div>
+
+              {/* On the ground services */}
+              <OnTheGroundServicesBlock
+                destinationName={destination.name}
+                destinationSlug={destination.slug}
+              />
             </div>
 
-            {/* Sidebar — Quick Facts */}
+            {/* Sidebar */}
             <aside className="space-y-6">
               <div className="bg-white rounded-2xl border border-navy-100 p-6 sticky top-24">
                 <h3 className="font-display text-lg font-bold text-navy-900 mb-4 flex items-center gap-2">
@@ -220,6 +236,18 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                   </Link>
                 </div>
               </div>
+
+              {/* Sailing schools */}
+              <SailingSchoolBlock
+                destinationName={destination.name}
+                destinationSlug={destination.slug}
+              />
+
+              {/* Business CTA */}
+              <IsYourBusinessHereCard
+                destinationName={destination.name}
+                destinationSlug={destination.slug}
+              />
             </aside>
           </div>
         </section>

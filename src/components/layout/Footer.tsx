@@ -16,9 +16,11 @@ const footerLinks = {
   partnerships: [
     { href: "/partner", label: "Partner Hub" },
     { href: "/partner/charter", label: "Charter Partners" },
-    { href: "/partner/marina", label: "List Your Marina" },
-    { href: "/partner/provisioning", label: "Provisioning" },
-    { href: "/partner/transfers", label: "Transfers" },
+    { href: "/partner/school", label: "Sailing Schools" },
+    { href: "/partner/broker", label: "Yacht Brokers" },
+    { href: "/partner/marina", label: "Marinas" },
+    { href: "/partner/services", label: "Provisioning & Services" },
+    { href: "/partner/sponsor", label: "Regional Sponsorship" },
   ],
   company: [
     { href: "/about", label: "About Us" },

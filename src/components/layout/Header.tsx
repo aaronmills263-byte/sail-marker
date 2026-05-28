@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, Search, ChevronDown, Anchor, Ship, Compass, Mail } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, Search, ChevronDown } from "lucide-react";
 
 const navLinks = [
   { href: "/destinations", label: "Destinations" },
@@ -17,36 +17,9 @@ const moreLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const partnerLinks = [
-  { href: "/list-your-marina", label: "List Your Marina", desc: "Marinas & charter bases", icon: Anchor },
-  { href: "/charter-partners", label: "Charter Partners", desc: "Charter companies & flotilla operators", icon: Ship },
-];
-
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
-  const [partnerOpen, setPartnerOpen] = useState(false);
-  const [mobilePartnerOpen, setMobilePartnerOpen] = useState(false);
-  const partnerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (partnerRef.current && !partnerRef.current.contains(e.target as Node)) {
-        setPartnerOpen(false);
-      }
-    }
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setPartnerOpen(false);
-    }
-    if (partnerOpen) {
-      document.addEventListener("mousedown", handleClick);
-      document.addEventListener("keydown", handleKey);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-      document.removeEventListener("keydown", handleKey);
-    };
-  }, [partnerOpen]);
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-navy-100">
@@ -109,37 +82,12 @@ export function Header() {
             </button>
           </nav>
 
-          <div className="hidden md:block relative" ref={partnerRef}>
-            <button
-              onClick={() => setPartnerOpen(!partnerOpen)}
-              onMouseEnter={() => setPartnerOpen(true)}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-navy-700 text-white text-sm font-medium rounded-lg hover:bg-navy-800 transition-colors"
-            >
-              Partner with us
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${partnerOpen ? "rotate-180" : ""}`} />
-            </button>
-            {partnerOpen && (
-              <div
-                className="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-lg border border-navy-100 py-2 z-50"
-                onMouseLeave={() => setPartnerOpen(false)}
-              >
-                {partnerLinks.map((link) => (
-                  <Link
-                    key={link.href + link.label}
-                    href={link.href}
-                    className="flex items-start gap-3 px-4 py-3 hover:bg-navy-50 transition-colors"
-                    onClick={() => setPartnerOpen(false)}
-                  >
-                    <link.icon className="w-5 h-5 text-navy-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-sm font-semibold text-navy-900">{link.label}</p>
-                      <p className="text-xs text-navy-500">{link.desc}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          <Link
+            href="/partner"
+            className="hidden md:inline-flex items-center px-5 py-2.5 bg-navy-700 text-white text-sm font-medium rounded-lg hover:bg-navy-800 transition-colors"
+          >
+            Partner With Us
+          </Link>
 
           <button
             className="md:hidden text-navy-700"
@@ -167,31 +115,13 @@ export function Header() {
             ))}
 
             <div className="mt-4 border-t border-navy-100 pt-4">
-              <button
-                onClick={() => setMobilePartnerOpen(!mobilePartnerOpen)}
-                className="w-full flex items-center justify-between px-4 py-2.5 bg-navy-700 text-white font-medium rounded-lg"
+              <Link
+                href="/partner"
+                className="block w-full text-center px-4 py-2.5 bg-navy-700 text-white font-medium rounded-lg"
+                onClick={() => setMobileOpen(false)}
               >
-                Partner with us
-                <ChevronDown className={`w-4 h-4 transition-transform ${mobilePartnerOpen ? "rotate-180" : ""}`} />
-              </button>
-              {mobilePartnerOpen && (
-                <div className="mt-2 bg-navy-50 rounded-lg divide-y divide-navy-100">
-                  {partnerLinks.map((link) => (
-                    <Link
-                      key={link.href + link.label}
-                      href={link.href}
-                      className="flex items-start gap-3 px-4 py-3"
-                      onClick={() => { setMobileOpen(false); setMobilePartnerOpen(false); }}
-                    >
-                      <link.icon className="w-5 h-5 text-navy-400 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-sm font-semibold text-navy-900">{link.label}</p>
-                        <p className="text-xs text-navy-500">{link.desc}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
+                Partner With Us
+              </Link>
             </div>
           </div>
         )}
