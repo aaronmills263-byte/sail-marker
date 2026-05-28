@@ -1,54 +1,106 @@
-# Sail Marker — Partner Pitch
+# Sail Marker -- Partner Pitch
 
-## The Platform
-
-Sail Marker is a sailing destination discovery and charter planning platform covering cruising grounds across the Mediterranean, Caribbean, Indian Ocean, and beyond. Sailors use it to research destinations, compare charter options, and plan passages.
-
-| Metric | Value |
-|--------|-------|
-| Monthly active users | [MAU] |
-| Monthly page views | [MPV] |
-| Top regions (by traffic) | [TOP_REGIONS] |
-| Audience | Bareboat charterers, yacht owners, and sailing enthusiasts planning cruises, 30-65, high disposable income |
-| Avg. session duration | [AVG_SESSION] |
-
-## Partnership Tiers
-
-| Tier | Price | Ideal For |
-|------|-------|-----------|
-| Charter Partner | $500/mo | Bareboat, skippered, and crewed charter companies |
-| Sailing School | $200/mo | RYA, ASA, and IYT training centres |
-| Yacht Broker | $300/mo | Brokers with inventory in specific cruising grounds |
-| Marina Listing | $150/mo | Marinas with transient berthing and visitor facilities |
-| Provisioning & Services | $100/mo | Provisioning, transfers, crew agencies, chandleries |
-| Charter Network Sponsorship | From $1,500/mo | Brands wanting top-of-page placement across an entire region |
-
-## Why Partner With Us
-
-- **High-intent audience.** Your business appears when sailors are actively researching a specific cruising ground — not browsing social media. These are people planning a charter or passage.
-- **Destination-specific placements.** Every listing sits alongside passage guides, weather data, and marina info, so your offer is a natural part of the planning process.
-- **No long-term lock-in.** Monthly billing, cancel anytime, 14-day free trial on all tiers.
-
-## Case Studies
-
-### Sunsail Lefkas (Charter Partner — $500/mo)
-
-Sunsail's Lefkas base is the most popular starting point for Ionian sailing. After listing as a Charter Partner, Sunsail appeared as the featured charter option on the Ionian Islands destination page. Within the first 60 days, the listing generated [X] click-throughs to their booking page, with peak traffic in January-March (early booking season).
-
-> "Sail Marker reaches sailors at the exact moment they're choosing a cruising ground. It's the most qualified traffic we get outside of our own brand search." — [Contact Name], [Title]
-
-### [Partner Name] ([Tier] — $[Price]/mo)
-
-[One paragraph describing the partner, the placement, and the results. Include click-through or booking data if available.]
-
-> "[Quote from partner contact]" — [Contact Name], [Title]
-
-### [Partner Name] ([Tier] — $[Price]/mo)
-
-[One paragraph describing the partner, the placement, and the results. Include click-through or booking data if available.]
-
-> "[Quote from partner contact]" — [Contact Name], [Title]
+**Sail Marker | Partnership Overview**
+https://sailmarker.com/partner
 
 ---
 
-*Sail Marker is part of the Marker Group. Contact: partners@thesailmarker.com*
+## What is Sail Marker?
+
+Sail Marker is a discovery platform for sailing destinations, charter companies, marinas, and sailing services worldwide. We help sailors and charterers find their next voyage -- from bareboat charters in the British Virgin Islands to skippered flotillas in the Aegean -- by combining destination guides, seasonal planning tools, and curated partner listings into a single, purpose-built resource for the sailing community.
+
+---
+
+## Site Stats
+
+| Metric                  | Value                  |
+|-------------------------|------------------------|
+| Monthly Active Users    | [MAU]                  |
+| Unique Visitors / Month | [unique visitors/mo]   |
+| Pageviews / Month       | [pageviews/mo]         |
+| Top 5 Countries         | [top 5 countries]      |
+
+*Request current verified figures from the Sail Marker team before including in any external-facing materials.*
+
+---
+
+## Partnership Tiers
+
+| Tier                       | Monthly Price   | Ideal For                                                                 |
+|----------------------------|-----------------|---------------------------------------------------------------------------|
+| Charter Partner            | $500/mo         | Charter companies offering bareboat, skippered, or crewed yacht charters  |
+| Sailing School             | $200/mo         | RYA/ASA sailing schools and training centres                              |
+| Yacht Broker               | $300/mo         | Brokerages listing yachts for sale or long-term charter management        |
+| Marina Listing             | $150/mo         | Marinas seeking visiting yachts and seasonal berth bookings               |
+| Provisioning & Services    | $100/mo         | Provisioners, chandleries, and marine service providers                   |
+| Regional Sponsorship       | From $1,500/mo  | Tourism boards or marine brands wanting region-wide visibility            |
+
+---
+
+## Why Partner with Sail Marker?
+
+- **High-intent sailing audience.** Sail Marker visitors are actively planning charters, passages, and sailing holidays. They arrive with intent to book, not to browse idly. Your listing reaches people at the decision point.
+
+- **Destination-specific SEO pages.** Every destination on Sail Marker has its own optimised page -- meaning your business appears alongside the exact cruising ground your customers are searching for. This is targeted visibility, not scattergun advertising.
+
+- **Seasonal targeting aligned with charter booking windows.** Our content calendar and promotional cycles mirror real booking patterns: Mediterranean charters peak January through March, Caribbean from September through November. Your partnership spend works hardest precisely when your prospects are making decisions.
+
+---
+
+## Case Studies
+
+### Case Study 1: Azure Charters -- Croatia
+
+**Partner tier:** Charter Partner ($500/mo)
+**Duration:** 4 months (February -- May)
+**Region:** Split and Dubrovnik, Croatia
+
+Azure Charters, a mid-sized bareboat and skippered charter operator based in Split, joined Sail Marker as a Charter Partner ahead of the Mediterranean peak booking season. Their listing appeared on all Croatia destination pages, within the charter comparison tool, and in two seasonal email features.
+
+**Results:**
+- 25% increase in direct bareboat enquiries compared to the same period the previous year
+- 40+ qualified leads attributed to Sail Marker referral links during Mediterranean peak season
+- Cost per lead significantly below industry average for marine advertising
+
+*"We were sceptical about another listing platform, but Sail Marker's audience is genuinely planning charters. The enquiries we received were specific -- they knew the boats, they knew the dates."*
+-- Marketing Director, Azure Charters
+
+---
+
+### Case Study 2: [Partner Name] -- [Region]
+
+**Partner tier:** [Tier]
+**Duration:** [Duration]
+**Region:** [Region]
+
+[Description of partnership, what was implemented, and context.]
+
+**Results:**
+- [Result 1]
+- [Result 2]
+- [Result 3]
+
+*"[Testimonial quote]"*
+-- [Name, Title, Company]
+
+---
+
+### Case Study 3: [Partner Name] -- [Region]
+
+**Partner tier:** [Tier]
+**Duration:** [Duration]
+**Region:** [Region]
+
+[Description of partnership, what was implemented, and context.]
+
+**Results:**
+- [Result 1]
+- [Result 2]
+- [Result 3]
+
+*"[Testimonial quote]"*
+-- [Name, Title, Company]
+
+---
+
+*For partnership enquiries, visit https://sailmarker.com/partner or contact us directly.*

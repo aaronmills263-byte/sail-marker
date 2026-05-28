@@ -1,11 +1,11 @@
 business_name,partner_type,contact_name,contact_email,contact_title,website,destination_or_venue,distance_km,notes,email_template,status
-Sunsail,charter,,,,"https://www.sunsail.com/",Ionian Islands,0,Major bareboat charter company — Lefkas base is their flagship,charter,new
-Dream Yacht Charter,charter,,,,"https://www.dreamyachtcharter.com/",Croatia,0,Global charter fleet — strong presence in Split and Dubrovnik,charter,new
-The Moorings,charter,,,,"https://www.moorings.com/",British Virgin Islands,0,Premium bareboat and crewed charters — Tortola base,charter,new
-Seaforth Sailing,school,,,,"https://www.seaforthsailing.org/",Southern California,0,ASA-certified school in San Diego,school,new
-Wildwind Sailing,school,,,,"https://www.wildwind.co.uk/",Ionian Islands,0,RYA training centre in Vasiliki — flotilla and tuition,school,new
-BGYB (Bernard Gallay Yacht Brokerage),broker,,,,"https://www.bfrenchyachts.com/",Mediterranean,0,French brokerage with Mediterranean inventory,broker,new
-ACI Marina Split,marina,,,,"https://www.aci-marinas.com/aci_marina/aci-marina-split/",Croatia,0,Modern marina in Split — popular charter base,marina,new
-D-Marin Gocek,marina,,,,"https://www.d-marin.com/en/marinas/gocek",Turkish Riviera,0,Premium marina on the Lycian Coast,marina,new
-The Yacht Provisioning Company,services,,,,"https://www.yachtprovision.com/",British Virgin Islands,0,Full provisioning service for charter yachts in BVI,services,new
-Navigare Yachting,charter,,,,"https://www.navigare-yachting.com/",Mediterranean,0,Yacht charter and ownership — bases across Med and Caribbean,charter,new
+Sunsail (Tortola base),Charter Partner,,,,"https://www.sunsail.com",BVI,,Major bareboat and skippered charter operator with extensive Caribbean fleet; Tortola is a flagship base,Charter Partner,prospect
+Dream Yacht Charter (Sardinia),Charter Partner,,,,"https://www.dreamyachtcharter.com",Sardinia,,Global charter company with 50+ destinations; Sardinia base covers Maddalena archipelago and Costa Smeralda,Charter Partner,prospect
+The Moorings (BVI),Charter Partner,,,,"https://www.moorings.com",BVI,,Premium bareboat and crewed charter fleet; strong brand recognition among experienced charterers,Charter Partner,prospect
+Plain Sailing (Croatia),Sailing School,,,,"https://www.plainsailing.com",Croatia,,Flotilla holidays and learn-to-sail packages in the Adriatic; well-positioned for charter training,Sailing School,prospect
+Sunsail Sailing School,Sailing School,,,,"https://www.sunsail.com/sailing-school",UK/Global,,RYA-accredited sailing school with locations in the UK and Mediterranean; feeds directly into their charter business,Sailing School,prospect
+Bobby's Megastore,Provisioning & Services,,,,,"BVI",,Well-known BVI provisioner on Tortola; supplies charter yachts with groceries and provisions pre-departure,Provisioning & Services,prospect
+Riggers & Jiggers,Provisioning & Services,,,,,"Croatia",,Marine chandlery and rigging services based in Split; serves the charter fleet turnaround market,Provisioning & Services,prospect
+IGY Marinas,Marina Listing,,,,"https://www.igymarinas.com",Caribbean/Med,,Network of premium marinas across the Caribbean and Mediterranean; strong superyacht and cruiser presence,Marina Listing,prospect
+Ancasta Yacht Brokerage,Yacht Broker,,,,"https://www.ancasta.com",UK/Med,,One of Europe's largest yacht brokerages; offices across the UK and Mediterranean with broad inventory,Yacht Broker,prospect
+Horizon Yacht Charters,Charter Partner,,,,"https://www.horizonyachtcharters.com",BVI/Grenada,,Independent charter company operating in the BVI and Grenada; strong reputation for personal service,Charter Partner,prospect
