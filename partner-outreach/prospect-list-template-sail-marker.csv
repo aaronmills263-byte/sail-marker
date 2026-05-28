@@ -1,0 +1,11 @@
+business_name,partner_type,contact_name,contact_email,contact_title,website,destination_or_venue,distance_km,notes,email_template,status
+Sunsail,charter,,,,"https://www.sunsail.com/",Ionian Islands,0,Major bareboat charter company — Lefkas base is their flagship,charter,new
+Dream Yacht Charter,charter,,,,"https://www.dreamyachtcharter.com/",Croatia,0,Global charter fleet — strong presence in Split and Dubrovnik,charter,new
+The Moorings,charter,,,,"https://www.moorings.com/",British Virgin Islands,0,Premium bareboat and crewed charters — Tortola base,charter,new
+Seaforth Sailing,school,,,,"https://www.seaforthsailing.org/",Southern California,0,ASA-certified school in San Diego,school,new
+Wildwind Sailing,school,,,,"https://www.wildwind.co.uk/",Ionian Islands,0,RYA training centre in Vasiliki — flotilla and tuition,school,new
+BGYB (Bernard Gallay Yacht Brokerage),broker,,,,"https://www.bfrenchyachts.com/",Mediterranean,0,French brokerage with Mediterranean inventory,broker,new
+ACI Marina Split,marina,,,,"https://www.aci-marinas.com/aci_marina/aci-marina-split/",Croatia,0,Modern marina in Split — popular charter base,marina,new
+D-Marin Gocek,marina,,,,"https://www.d-marin.com/en/marinas/gocek",Turkish Riviera,0,Premium marina on the Lycian Coast,marina,new
+The Yacht Provisioning Company,services,,,,"https://www.yachtprovision.com/",British Virgin Islands,0,Full provisioning service for charter yachts in BVI,services,new
+Navigare Yachting,charter,,,,"https://www.navigare-yachting.com/",Mediterranean,0,Yacht charter and ownership — bases across Med and Caribbean,charter,new
