@@ -12,6 +12,16 @@ import { OnTheGroundServicesBlock } from "@/components/partners/OnTheGroundServi
 import { SailingSchoolBlock } from "@/components/partners/SailingSchoolBlock";
 import { IsYourBusinessHereCard } from "@/components/partners/IsYourBusinessHereCard";
 
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const { data: destinations } = await supabase
+    .from("charter_destinations")
+    .select("slug")
+    .eq("status", "live");
+  return (destinations ?? []).map((d) => ({ slug: d.slug }));
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

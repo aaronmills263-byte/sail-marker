@@ -5,6 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import { supabase } from "@/lib/supabase";
 import { Anchor, MapPin, Ship, ArrowLeft, Fuel, Waves, Wrench } from "lucide-react";
 
+export const revalidate = 3600;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

@@ -8,6 +8,14 @@ import { Clock, Calendar, ArrowLeft, BookOpen, MapPin } from "lucide-react";
 
 export const revalidate = 3600;
 
+export async function generateStaticParams() {
+  const { data: guides } = await supabase
+    .from("editorial_guides")
+    .select("slug")
+    .eq("is_published", true);
+  return (guides ?? []).map((g) => ({ slug: g.slug }));
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

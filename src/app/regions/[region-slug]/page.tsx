@@ -70,6 +70,10 @@ const regionMap: Record<string, { name: string; description: string; highlights:
   },
 };
 
+export async function generateStaticParams() {
+  return Object.keys(slugToRegion).map((slug) => ({ "region-slug": slug }));
+}
+
 interface PageProps {
   params: Promise<{ "region-slug": string }>;
 }
