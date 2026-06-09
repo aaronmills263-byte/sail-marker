@@ -217,23 +217,41 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                 <dl className="space-y-3 text-sm">
                   <div>
                     <dt className="text-navy-400 font-medium">Best Season</dt>
-                    <dd className="text-navy-700">{destination.best_season || "—"}</dd>
+                    <dd className="text-navy-700">
+                      {destination.best_months?.length
+                        ? `${destination.best_months[0][0].toUpperCase()}${destination.best_months[0].slice(1)} – ${destination.best_months[destination.best_months.length - 1][0].toUpperCase()}${destination.best_months[destination.best_months.length - 1].slice(1)}`
+                        : "—"}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-navy-400 font-medium">Wind Conditions</dt>
-                    <dd className="text-navy-700">{destination.wind_conditions || "—"}</dd>
+                    <dd className="text-navy-700">{destination.prevailing_wind || "—"}</dd>
                   </div>
                   <div>
                     <dt className="text-navy-400 font-medium">Experience Level</dt>
-                    <dd className="text-navy-700">{destination.experience_level || "—"}</dd>
+                    <dd className="text-navy-700">
+                      {destination.wind_difficulty
+                        ? destination.wind_difficulty[0].toUpperCase() + destination.wind_difficulty.slice(1)
+                        : "—"}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-navy-400 font-medium">Charter Types</dt>
-                    <dd className="text-navy-700">{destination.charter_types || "—"}</dd>
+                    <dd className="text-navy-700">
+                      {destination.best_for?.length
+                        ? destination.best_for.map((t: string) => t.replace(/-/g, " ")).join(", ")
+                        : "—"}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-navy-400 font-medium">Price Range</dt>
-                    <dd className="text-navy-700">{destination.price_range || "—"}</dd>
+                    <dd className="text-navy-700">
+                      {destination.weekly_charter_low_eur && destination.weekly_charter_high_eur
+                        ? `€${destination.weekly_charter_low_eur.toLocaleString()} – €${destination.weekly_charter_high_eur.toLocaleString()}/week`
+                        : destination.price_tier
+                          ? destination.price_tier.replace(/_/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase())
+                          : "—"}
+                    </dd>
                   </div>
                 </dl>
 
