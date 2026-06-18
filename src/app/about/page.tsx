@@ -99,7 +99,7 @@ export default function AboutPage() {
             >
               Marker Group
             </Link>
-            {" "}— a family of curated travel discovery brands including Mountain Marker (ski resorts), Links Marker (golf courses), Match Marker (sports events), and Reef Marker (diving destinations). Each built for enthusiasts who travel for their passions.
+            {" "}— a family of curated travel discovery brands including Mountain Marker (ski resorts), Links Marker (golf courses), and Match Marker (sports events). Each built for enthusiasts who travel for their passions.
           </p>
           <p className="text-navy-600 leading-relaxed">
             The Marker family shares a design system, an editorial philosophy, and a commitment to quality content over quantity. Every property is built on the same foundations: original research, factual content, and a deliberate choice not to cover everything — only what&apos;s worth travelling for.

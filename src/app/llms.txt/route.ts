@@ -32,7 +32,7 @@ export function GET() {
 ## Company
 - [About](https://www.sailmarker.com/about): About Sail Marker
 - [Responsible Sailing](https://www.sailmarker.com/responsible-sailing): Marine conservation and sustainable sailing principles
-- [Marker Group](https://www.sailmarker.com/marker-group): Part of the Marker Group family (Mountain Marker, Links Marker, Match Marker, Sail Marker, Reef Marker)
+- [Marker Group](https://www.sailmarker.com/marker-group): Part of the Marker Group family (Mountain Marker, Links Marker, Match Marker, Sail Marker)
 `;
 
   return new Response(content, {

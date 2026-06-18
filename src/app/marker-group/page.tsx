@@ -8,11 +8,11 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "The Marker Group — A family of travel discovery brands",
   description:
-    "Mountain Marker, Links Marker, Match Marker, Sail Marker, Reef Marker — curated travel discovery brands by the Marker Group. Each focused on one specific way to explore the world.",
+    "Mountain Marker, Links Marker, Match Marker, Sail Marker — curated travel discovery brands by the Marker Group. Each focused on one specific way to explore the world.",
   openGraph: {
     title: "The Marker Group — A family of travel discovery brands",
     description:
-      "Mountain Marker, Links Marker, Match Marker, Sail Marker, Reef Marker — curated travel discovery brands by the Marker Group.",
+      "Mountain Marker, Links Marker, Match Marker, Sail Marker — curated travel discovery brands by the Marker Group.",
     url: "https://www.sailmarker.com/marker-group",
     images: [{ url: "/og-default.png", width: 1200, height: 630 }],
   },
@@ -59,16 +59,6 @@ const properties = [
     logo: "/images/branding/marker-group/sail-marker-icon.png",
     accent: "#0F3D5C",
     status: "live" as const,
-  },
-  {
-    id: "reef-marker",
-    name: "Reef Marker",
-    tagline: "The world's diving destinations, mapped.",
-    url: "https://www.reefmarker.com",
-    logo: "/images/branding/marker-group/reef-marker-icon.svg",
-    accent: "#00838F",
-    status: "coming" as const,
-    badge: "Coming June 2026",
   },
 ];
 
@@ -294,7 +284,6 @@ export default function MarkerGroupPage() {
               What&apos;s next
             </h2>
             <p className="text-navy-200 leading-relaxed mb-10">
-              Reef Marker launches in June 2026.
               We&apos;re exploring further verticals across outdoor and travel
               discovery — each focused on one specific way to explore the world.
             </p>
