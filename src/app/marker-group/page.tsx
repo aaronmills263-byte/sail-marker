@@ -137,7 +137,6 @@ export default function MarkerGroupPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {properties.map((property) => {
               const isCurrent = property.id === CURRENT_PROPERTY;
-              const isComingSoon = property.status === "coming";
 
               return (
                 <div
@@ -145,19 +144,12 @@ export default function MarkerGroupPage() {
                   className={`relative rounded-2xl p-6 transition-all ${
                     isCurrent
                       ? "bg-navy-900 text-white ring-2 ring-sky-300 shadow-lg"
-                      : isComingSoon
-                      ? "bg-sail-100 text-navy-400 border border-sail-300"
                       : "bg-white text-navy-900 border border-navy-100 hover:shadow-md hover:border-navy-200"
                   }`}
                 >
                   {isCurrent && (
                     <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase bg-sky-300 text-navy-900 px-2.5 py-1 rounded-full">
                       You&apos;re here
-                    </span>
-                  )}
-                  {isComingSoon && property.badge && (
-                    <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase bg-sail-300 text-navy-600 px-2.5 py-1 rounded-full">
-                      {property.badge}
                     </span>
                   )}
 
@@ -173,40 +165,26 @@ export default function MarkerGroupPage() {
                       alt={`${property.name} logo`}
                       width={64}
                       height={64}
-                      className={`w-full h-full object-contain ${
-                        isComingSoon ? "opacity-50" : ""
-                      } ${isCurrent ? "brightness-0 invert" : ""}`}
+                      className={`w-full h-full object-contain ${isCurrent ? "brightness-0 invert" : ""}`}
                     />
                   </div>
 
                   <h3
                     className={`font-display text-xl font-bold mb-2 ${
-                      isCurrent
-                        ? "text-white"
-                        : isComingSoon
-                        ? "text-navy-400"
-                        : "text-navy-900"
+                      isCurrent ? "text-white" : "text-navy-900"
                     }`}
                   >
                     {property.name}
                   </h3>
                   <p
                     className={`text-sm leading-relaxed mb-6 ${
-                      isCurrent
-                        ? "text-navy-200"
-                        : isComingSoon
-                        ? "text-navy-400"
-                        : "text-navy-600"
+                      isCurrent ? "text-navy-200" : "text-navy-600"
                     }`}
                   >
                     {property.tagline}
                   </p>
 
-                  {isComingSoon ? (
-                    <span className="inline-flex items-center text-sm text-navy-400">
-                      Coming soon
-                    </span>
-                  ) : isCurrent ? (
+                  {isCurrent ? (
                     <Link
                       href="/"
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-300 hover:text-sky-200 transition-colors"
